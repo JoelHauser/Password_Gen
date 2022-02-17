@@ -15,8 +15,8 @@ This application generates random passwords. There are millions of combantions.
 
 ```bash
   Download with default installer
-  unzip file
-  fun index.html in folder
+  Un-zip file
+  Run index.html
 ```
     
 ## Authors
