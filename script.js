@@ -6,47 +6,42 @@ var generateBtn = document.querySelector("#generate");
 //array for special
 //numaric
 
-const lowercase = [122, 97],
-  uppercase = [90, 65],
-  numaric = [57, 48],
-  special = [47, 33];
+const lowercaseCharacters = "aabcdefghijklmnopqrstuvwxyz",
+      uppercaseCharacters = "aABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      numericCharacters = "a0123456789",
+      specialCharacters = "a!@#$%^&*()-=_+`~<>?,./;':{}[]\"|"
 
-function generatePassword() {
+function generatePassword(){
   var passwordLength = 0;
-  var CharacterTypes = [
-    ["lowercase", lowercase],
-    ["uppercase", uppercase],
-    ["numaric", numaric],
-    ["special", special],
-  ];
   var password = "";
+  var charsToInclude = "";
+  var charTypes = ["lowercase","uppercase","numeric","special"];
+  var promptComplete = false;
 
-  while (passwordLength > 128 || passwordLength < 8) {
-    passwordLength = window.prompt(
-      "Please enter the desired length of password (8-128): "
-    );
+  while(passwordLength > 128 || passwordLength < 8){
+    passwordLength = window.prompt("Please enter the desired length of your password: ");
   }
-  for (let i = 0; i < CharacterTypes.length; i++) {
-    var choice = window.prompt(
-      "Would you like to include " + CharacterTypes[i][0] + " characters? (Y/N)"
-    );
-    if (choice.toLowerCase() == "n") {
-      CharacterTypes.splice(i, 1);
+  for(let i = 0; i < charTypes.length; i++){
+    var choice = window.prompt("Would you like to include " + charTypes[i] + " characters? (Y/N)");
+    if(i == 0 && choice === "y"){
+      charsToInclude += lowercaseCharacters;
+    } else if (i == 1 && choice === "y"){
+      charsToInclude += uppercaseCharacters;
+    } else if (i == 2 && choice === "y"){
+      charsToInclude += numericCharacters;
+    } else if (i == 3 && choice === "y"){
+      charsToInclude += specialCharacters;
     }
   }
 
-  for (let i = 0; i < passwordLength; i++) {
-    var current =
-      CharacterTypes[Math.round(Math.random() * (CharacterTypes.length - 1))];
-    var min = current[1][1];
-    var max = current[1][0];
+  console.log(charsToInclude);
+  for(let i = 0; i < passwordLength; i++){
 
-    password += String.fromCharCode(
-      Math.floor(Math.random() * (max - min) + min)
-    );
+    password += charsToInclude.charAt(Math.floor(Math.random() * (charsToInclude.length - 1)));
   }
 
   return password;
+
 }
 // Write password to the #password input
 function writePassword() {
