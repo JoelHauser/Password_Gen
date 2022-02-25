@@ -19,7 +19,7 @@ function generatePassword(){
   var promptComplete = false;
 
   while(passwordLength > 128 || passwordLength < 8){
-    passwordLength = window.prompt("Please enter the desired length of your password: ");
+    passwordLength = window.prompt("Please enter the desired length of your password (8-128): ");
   }
   for(let i = 0; i < charTypes.length; i++){
     var choice = window.prompt("Would you like to include " + charTypes[i] + " characters? (Y/N)");

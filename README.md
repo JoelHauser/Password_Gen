@@ -3,6 +3,10 @@
 
 This application generates random passwords. There are millions of combantions.
 
+# How to use the program
+
+Simply click on 'Generate Password', fill in the prompt with the amount of characters, choose which type of characters you would like included in your new password!
+
 
 ## Demo
 
